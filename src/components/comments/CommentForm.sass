@@ -1,0 +1,43 @@
+.comment-form
+  display: flex
+  flex-flow: column
+  margin: 0 auto
+  max-width: 50%
+
+  &__row
+    align-items: center
+    display: flex
+    flex: 1
+    justify-content: center
+    margin-bottom: 1em
+
+  &__label
+    flex-basis: 25%
+    padding-right: 1em
+    text-align: right
+
+  &__input
+    flex-basis: 75%
+
+  &__hint
+    color: #999999
+    font-style: italic
+    margin: -1em 0 1em 0
+    text-align: right
+
+  &__submit
+    background-color: #60b0f4
+    border: none
+    color: #ffffff
+    cursor: pointer
+    font-size: .8em
+    letter-spacing: .1em
+    padding: 1em 1.2em
+    text-transform: uppercase
+
+    &:hover
+      background-color: #999999
+
+    &.is-disabled
+      background-color: #d8d8d8
+      cursor: not-allowed
