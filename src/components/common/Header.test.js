@@ -24,5 +24,5 @@ it("renders logo", () => {
 
 	expect(
 		container.querySelector('.header__logo img').getAttribute("alt")
-	).toEqual("logo image");
+	).toEqual("persian cat cartoon logo");
 });

@@ -91,9 +91,11 @@ export class UserMentionTextarea extends Component {
 		return (
 			<React.Fragment>
 				<div className="comment-form__row">
-					<label className="comment-form__label">Comment:</label>
+					<label htmlFor="comment-textarea"
+					       className="comment-form__label">Comment:</label>
 					<textarea
 						className="comment-form__input js-textarea"
+						id="comment-textarea"
 						name="text"
 						placeholder="Write your comment here..."
 						ref={this.commentText}

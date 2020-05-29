@@ -55,10 +55,12 @@ class CommentForm extends Component {
 		return (
 			<form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
 				<div className="comment-form__row">
-					<label className="comment-form__label">Name:</label>
+					<label htmlFor="name"
+					       className="comment-form__label" >Name:</label>
 					<input
 						type="text"
 						className="comment-form__input js-name"
+						id="name"
 						name="name"
 						placeholder="Your name"
 						value={this.state.name}
@@ -71,7 +73,7 @@ class CommentForm extends Component {
 				                     users={this.props.users} />
 				<div className="comment-form__row">
 					<input type="submit"
-					       className={`comment-form__submit${!this.state.text ? ' is-disabled' : 'js-enabled'}`}
+					       className={`comment-form__submit${!this.state.text ? ' is-disabled' : ' js-enabled'}`}
 					       value="Submit" />
 				</div>
 			</form>

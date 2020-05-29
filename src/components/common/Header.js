@@ -12,15 +12,17 @@ export class Header extends Component {
 		return (
 			<header className="header">
 				<div className="header__logo">
-					<img src={logo} alt="logo" />
+					<img src={logo} alt="persian cat cartoon logo" />
 				</div>
-				<ul className="header__ul">
-					{navLinks.map(({ href, title}, index) => (
-						<li key={index} className="header__li">
-							<a className="header__link" href={href} title={title}>{title}</a>
-						</li>
-					))}
-				</ul>
+				<nav className="header__nav">
+					<ul className="header__ul">
+						{navLinks.map(({ href, title}, index) => (
+							<li key={index} className="header__li">
+								<a className="header__link" href={href} title={title}>{title}</a>
+							</li>
+						))}
+					</ul>
+				</nav>
 			</header>
 		);
 	}

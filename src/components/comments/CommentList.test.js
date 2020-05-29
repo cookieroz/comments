@@ -20,13 +20,13 @@ describe('CommentList component', () => {
 	});
 
 	it('it renders comments', () => {
-		expect(wrapper.find('.comment').length).toBe(2);
-		expect(wrapper.find('.no-comments').exists()).toBe(false);
+		expect(wrapper.find('.comment-list__comment').length).toBe(2);
+		expect(wrapper.find('.comment-list__no-comments').exists()).toBe(false);
 	});
 
 	it('it renders no-comments', () => {
 		wrapper = shallow(<CommentList />)
-		expect(wrapper.find('.no-comments').exists()).toBe(true);
-		expect(wrapper.find('.comments').exists()).toBe(false);
+		expect(wrapper.find('.comment-list__no-comments').exists()).toBe(true);
+		expect(wrapper.find('.comment-list__comments').exists()).toBe(false);
 	});
 });

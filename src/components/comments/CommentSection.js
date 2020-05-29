@@ -7,7 +7,7 @@ class CommentSection extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			comments: [{ id: 'comment_1', name: 'testing', text: 'is this gonna work?'}],
+			comments: [],
 			users: [],
 		};
 	}
@@ -31,11 +31,11 @@ class CommentSection extends Component {
 
 	render() {
 		return (
-			<div className="comment-section">
+			<section className="comment-section">
 				<h1 className="comment-section__title">Comments</h1>
 				<CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} users={this.state.users} />
 				<CommentList comments={this.state.comments} />
-			</div>
+			</section>
 		)
 	}
 }
