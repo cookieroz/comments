@@ -1,29 +1,49 @@
-import React, { Component } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import './CommentList.sass'
 
-class CommentList extends Component {
-	render() {
-		const comments = this.props.comments;
-		let commentsListClass = 'comment-list';
-		let list;
-		if (comments && comments.length) {
-			list = comments.map(({ name, id, text}) => (
-				<div key={id} className="comment-list__comment">
-					<div className="comment-list__name">{name}</div>
-					<p className="comment-list__text" dangerouslySetInnerHTML={{__html: text}} />
-				</div>
-			));
-		} else {
-			let noCommentsTextClass = `${commentsListClass}__no-comments-text`
-			commentsListClass = `${commentsListClass} ${commentsListClass}__no-comments`
-			list = <p className={noCommentsTextClass}>no comments</p>;
-		}
-		return (
-			<div className={commentsListClass}>
-				{list}
-			</div>
-		)
-	}
+export function CommentList({ comments }) {
+  const baseCommentListClass = 'comment-list'
+  const [commentsListClass, setCommentsListClass] = useState(
+    baseCommentListClass
+  )
+  const [list, setList] = useState()
+
+  function buildCommentListElements() {
+    setCommentsListClass(baseCommentListClass)
+    return comments.map(({ name, id, text }) => (
+      <div key={id} className={`${baseCommentListClass}__comment`}>
+        <div className={`${baseCommentListClass}__name`}>{name}</div>
+        <p
+          className={`${baseCommentListClass}__text`}
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
+      </div>
+    ))
+  }
+
+  function buildEmptyListElements() {
+    const noCommentsTextClass = `${baseCommentListClass}__no-comments-text`
+    setCommentsListClass(
+      `${baseCommentListClass} ${baseCommentListClass}__no-comments`
+    )
+    return <p className={noCommentsTextClass}>no comments</p>
+  }
+
+  function buildListElements() {
+    const hasComments = comments && comments.length > 0
+    return hasComments ? buildCommentListElements() : buildEmptyListElements()
+  }
+
+  const listElements = useCallback(buildListElements, [comments])
+
+  useEffect(() => setList(listElements), [listElements])
+
+  return <div className={commentsListClass}>{list}</div>
 }
 
 export default CommentList
+
+CommentList.propTypes = {
+  comments: PropTypes.array,
+}

@@ -1,28 +1,28 @@
-import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import React from 'react'
+import { render, unmountComponentAtNode } from 'react-dom'
+import { act } from 'react-dom/test-utils'
 
-import Header from './Header';
+import Header from './Header'
 
-let container = null;
+let container = null
 
 beforeEach(() => {
-	container = document.createElement("div");
-	document.body.appendChild(container);
-});
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
 
 afterEach(() => {
-	unmountComponentAtNode(container);
-	container.remove();
-	container = null;
-});
+  unmountComponentAtNode(container)
+  container.remove()
+  container = null
+})
 
-it("renders logo", () => {
-	act(() => {
-		render(<Header />, container);
-	});
+it('renders logo', () => {
+  act(() => {
+    render(<Header />, container)
+  })
 
-	expect(
-		container.querySelector('.header__logo img').getAttribute("alt")
-	).toEqual("persian cat cartoon logo");
-});
+  expect(
+    container.querySelector('.header__logo img').getAttribute('alt')
+  ).toEqual('persian cat cartoon logo')
+})
